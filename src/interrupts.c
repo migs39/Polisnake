@@ -78,17 +78,12 @@ void handle_irq(void) {
     
     // Handle UART interrupt  
     if (pending_2 & (1 << (IRQ_UART - 32))) {
-        // UART receive interrupt
-        while (!(mmio_read(UART_BASE + 0x18) & 0x10)) { // While FIFO not empty
-            int c = uart_getc_nonblocking();
-            if (c >= 0) {
-                // Handle input for snake game
-                handle_uart_input((char)c);
-            }
+        // UART receive interrupt - read available characters
+        int c;
+        while ((c = uart_getc_nonblocking()) != -1) {
+            // Handle input for snake game
+            handle_uart_input((char)c);
         }
-        
-        // Clear UART interrupt
-        mmio_write(UART_BASE + 0x44, 0x10); // Clear receive interrupt
     }
     
     // Handle basic IRQs

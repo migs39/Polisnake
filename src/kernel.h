@@ -18,16 +18,13 @@ extern uint32_t __bss_end;
 extern uint32_t __heap_start;
 extern uint32_t __stack_start;
 
-// Basic types
-typedef unsigned char uint8_t;
-typedef unsigned short uint16_t;
-typedef unsigned int uint32_t;
-typedef unsigned long long uint64_t;
-
 // Utility macros
-#define NULL ((void*)0)
+#ifndef TRUE
 #define TRUE 1
+#endif
+#ifndef FALSE
 #define FALSE 0
+#endif
 
 // Memory operations
 static inline void memory_barrier(void) {
