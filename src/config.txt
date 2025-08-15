@@ -1,0 +1,37 @@
+# Raspberry Pi 2 Snake OS Boot Configuration
+
+# Use old kernel loading mechanism
+kernel_old=1
+
+# Disable command line tags
+disable_commandline_tags=1
+
+# Display configuration
+# Group 1 = CEA (TV standards)
+hdmi_group=1
+# Mode 9 = 800x600 @ 60Hz
+hdmi_mode=9
+# Force HDMI output (not DVI)
+hdmi_drive=2
+
+# Force hotplug (useful for some monitors)
+hdmi_force_hotplug=1
+
+# GPU memory split (minimum for our baremetal OS)
+gpu_mem=16
+
+# UART configuration
+enable_uart=1
+
+# Disable rainbow square (optional)
+disable_splash=1
+
+# ARM frequency (optional - can help with timing)
+arm_freq=900
+
+# Core voltage (optional - may be needed for overclocking)
+# over_voltage=2
+
+# Disable various services we don't need
+disable_audio_dither=1
+audio_pwm_mode=2
